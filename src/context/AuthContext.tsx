@@ -48,8 +48,6 @@ const AuthProvider = ({ children }: Props) => {
     password: string,
     rememberUser: boolean
   ) => {
-    setErrors(initErrors);
-
     //check in dummyData
     if (
       usersData.some(
@@ -71,6 +69,8 @@ const AuthProvider = ({ children }: Props) => {
       )
     ) {
       setErrors({ ...errors, password: 'Incorrect password!' });
+    } else {
+      setErrors({ ...errors, username: 'User not exist.' });
     }
   };
 

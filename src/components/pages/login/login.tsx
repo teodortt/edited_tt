@@ -12,6 +12,7 @@ const Login = () => {
 
   const handleLogin = (e: SyntheticEvent) => {
     e.preventDefault();
+    setErrors({ username: '', password: '' });
 
     if (validateForm()) {
       handleAuth(username, password, isChecked);
@@ -23,8 +24,6 @@ const Login = () => {
   };
 
   const validateForm = () => {
-    setErrors({ username: '', password: '' });
-
     const emailRegex = /^\S+@\S+\.\S+$/;
     const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/;
 
