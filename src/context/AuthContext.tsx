@@ -41,6 +41,7 @@ const AuthContext = createContext<IAuthContext>(initialValue);
 const AuthProvider = ({ children }: Props) => {
   const [username, setUsername] = useState(user);
   const [errors, setErrors] = useState(initErrors);
+  const [remembered, setRemembered] = useState(rememberedUser);
 
   const handleAuth = (
     username: string,
@@ -58,8 +59,10 @@ const AuthProvider = ({ children }: Props) => {
       setUsername(username);
       localStorage.setItem('loggedAs', username);
       if (rememberUser) {
+        setRemembered(username);
         localStorage.setItem('rememberedUser', username);
       } else {
+        setRemembered('');
         localStorage.removeItem('rememberedUser');
       }
     } else if (
@@ -83,7 +86,7 @@ const AuthProvider = ({ children }: Props) => {
         handleAuth,
         handleLogout,
         username: username ?? '',
-        rememberedUser: rememberedUser ?? '',
+        rememberedUser: remembered ?? '',
         errors,
         setErrors,
       }}
