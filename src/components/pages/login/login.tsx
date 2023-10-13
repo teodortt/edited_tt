@@ -4,18 +4,17 @@ import { AuthContext } from 'src/context/AuthContext';
 import { Input } from 'src/components';
 
 const Login = () => {
-  const initErrors = { username: '', password: '' };
-  const { handleAuth, rememberedUser } = useContext(AuthContext);
+  const { handleAuth, rememberedUser, errors, setErrors } =
+    useContext(AuthContext);
   const [username, setUsername] = useState(rememberedUser);
   const [password, setPassword] = useState('');
   const [isChecked, setIsChecked] = useState(false);
-  const [errors, setErrors] = useState(initErrors);
 
   const handleLogin = (e: SyntheticEvent) => {
     e.preventDefault();
 
     if (validateForm()) {
-      handleAuth(username, isChecked);
+      handleAuth(username, password, isChecked);
     }
   };
 
@@ -24,10 +23,10 @@ const Login = () => {
   };
 
   const validateForm = () => {
-    setErrors(initErrors);
+    setErrors({ username: '', password: '' });
 
     const emailRegex = /^\S+@\S+\.\S+$/;
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
+    const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/;
 
     const isValidUserName = emailRegex.test(username);
     const isValidPassword = passwordRegex.test(password);
