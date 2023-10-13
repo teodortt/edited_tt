@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  width: 410px;
+  height: 355px;
+  padding: 78px 45px 67px 45px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  background: #fff;
+
+  .formContainer {
+    .title {
+      color: #333;
+      font-family: Poppins;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
+      margin-bottom: 69px;
+    }
+
+    .form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .savedUser {
+        width: 326px;
+        height: 22px;
+        padding: 14px 18px;
+        border: none;
+        border-radius: 16px;
+        background: rgba(240, 237, 255, 0.8);
+        border: 1px solid transparent;
+        outline: none;
+        transition: all 0.3s ease-in-out;
+      }
+
+      input {
+        margin-bottom: 18px;
+
+        &:last-of-type {
+          margin-bottom: 10px;
+        }
+      }
+
+      .checkboxContainer {
+        display: flex;
+        justify-content: flex-start;
+        padding: 0 0 49px 65px;
+        width: 100%;
+
+        .rememberBox {
+          display: flex;
+          gap: 8px;
+
+          input {
+            margin: 0;
+            accent-color: #7649f8;
+          }
+
+          span {
+            color: #343a40;
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 28px;
+          }
+        }
+      }
+
+      .loginButton {
+        padding: 17px 31px;
+        color: #fff;
+        font-family: Poppins;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        border-radius: 16px;
+        background: linear-gradient(100deg, #9181f4 -5.85%, #5038ed 109.55%);
+        box-shadow: 0px 8px 21px 0px rgba(0, 0, 0, 0.16);
+
+        &:hover {
+          background: #5038ed;
+        }
+      }
+    }
+  }
+}

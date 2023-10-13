@@ -1,0 +1,20 @@
+.container {
+  color: white;
+
+  .logoutButton {
+    padding: 17px 31px;
+    color: #fff;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 16px;
+    background: #9181f4;
+    box-shadow: 0px 8px 21px 0px rgba(0, 0, 0, 0.16);
+
+    &:hover {
+      background: #5038ed;
+    }
+  }
+}
