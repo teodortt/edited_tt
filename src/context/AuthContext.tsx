@@ -6,7 +6,7 @@ type Props = {
 
 type IAuthContext = {
   authenticated: boolean;
-  handleLogin: (username: string, rememberUser: boolean) => void;
+  handleAuth: (username: string, rememberUser: boolean) => void;
   handleLogout: () => void;
   username: string;
   rememberedUser: string;
@@ -17,7 +17,7 @@ const rememberedUser = localStorage.getItem('rememberedUser');
 
 const initialValue = {
   authenticated: false,
-  handleLogin: () => {},
+  handleAuth: () => {},
   handleLogout: () => {},
   username: '',
   rememberedUser: '',
@@ -28,7 +28,7 @@ const AuthContext = createContext<IAuthContext>(initialValue);
 const AuthProvider = ({ children }: Props) => {
   const [username, setUsername] = useState(user);
 
-  const handleLogin = (username: string, rememberUser: boolean) => {
+  const handleAuth = (username: string, rememberUser: boolean) => {
     setUsername(username);
     localStorage.setItem('loggedAs', username);
     if (rememberUser) {
@@ -47,7 +47,7 @@ const AuthProvider = ({ children }: Props) => {
     <AuthContext.Provider
       value={{
         authenticated: Boolean(username),
-        handleLogin,
+        handleAuth,
         handleLogout,
         username: username ?? '',
         rememberedUser: rememberedUser ?? '',

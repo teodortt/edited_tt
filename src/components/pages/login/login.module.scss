@@ -37,12 +37,10 @@
         transition: all 0.3s ease-in-out;
       }
 
-      input {
-        margin-bottom: 18px;
-
-        &:last-of-type {
-          margin-bottom: 10px;
-        }
+      span {
+        color: red;
+        font-size: 11px;
+        height: 18px;
       }
 
       .checkboxContainer {
@@ -60,7 +58,7 @@
             accent-color: #7649f8;
           }
 
-          span {
+          div {
             color: #343a40;
             font-family: Inter;
             font-size: 16px;

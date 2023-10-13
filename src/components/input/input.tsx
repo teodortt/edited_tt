@@ -9,6 +9,7 @@ interface InputProps {
   placeholder?: string;
   required?: boolean;
   readOnly?: boolean;
+  autoComplete?: string;
 }
 
 const Input = ({
@@ -18,6 +19,7 @@ const Input = ({
   placeholder,
   required,
   readOnly,
+  autoComplete,
 }: InputProps) => {
   return (
     <input
@@ -28,6 +30,7 @@ const Input = ({
       value={value}
       required={required}
       readOnly={readOnly}
+      autoComplete={autoComplete}
     />
   );
 };
