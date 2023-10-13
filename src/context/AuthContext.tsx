@@ -24,17 +24,17 @@ type IAuthContext = {
 const user = localStorage.getItem('loggedAs');
 const rememberedUser = localStorage.getItem('rememberedUser');
 
+const initErrors = { username: '', password: '' };
+
 const initialValue = {
   authenticated: false,
   handleAuth: () => {},
   handleLogout: () => {},
   username: '',
   rememberedUser: '',
-  errors: { username: '', password: '' },
+  errors: initErrors,
   setErrors: () => {},
 };
-
-const initErrors = { username: '', password: '' };
 
 const AuthContext = createContext<IAuthContext>(initialValue);
 
