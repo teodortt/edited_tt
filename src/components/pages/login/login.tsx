@@ -4,11 +4,7 @@ import { AuthContext } from 'src/context/AuthContext';
 import { Input } from 'src/components';
 
 const Login = () => {
-  const {
-    handleLogin,
-    username: user,
-    rememberedUser,
-  } = useContext(AuthContext);
+  const { handleLogin, rememberedUser } = useContext(AuthContext);
 
   const [username, setUsername] = useState(rememberedUser);
   const [password, setPassword] = useState('');
@@ -23,22 +19,22 @@ const Login = () => {
       <div className={styles.formContainer}>
         <div className={styles.title}>Sign in to your account</div>
 
-        <div className={styles.form}>
-          {user ? (
-            <div className={styles.savedUser}>{user}</div>
-          ) : (
-            <Input
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              type='email'
-              placeholder='Username'
-            />
-          )}
+        <form className={styles.form}>
+          <Input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            type='email'
+            placeholder='Username'
+            required
+            readOnly={Boolean(rememberedUser)}
+          />
+
           <Input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type='password'
             placeholder='Password'
+            required
           />
 
           <div className={styles.checkboxContainer}>
@@ -58,7 +54,7 @@ const Login = () => {
           >
             Login Now
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );
