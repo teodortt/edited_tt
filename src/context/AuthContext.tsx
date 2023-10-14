@@ -68,9 +68,9 @@ const AuthProvider = ({ children }: Props) => {
         (user) => user.username === username && user.password !== password
       )
     ) {
-      setErrors({ ...errors, password: 'Incorrect password!' });
+      setErrors({ username: '', password: 'Incorrect password!' });
     } else {
-      setErrors({ ...errors, username: 'User not exist.' });
+      setErrors({ username: 'User not exist.', password: '' });
     }
   };
 
