@@ -21,7 +21,6 @@ type IAuthContext = {
   setErrors: (errors: ErrorsProps) => void;
 };
 
-const user = localStorage.getItem('loggedAs');
 const rememberedUser = localStorage.getItem('rememberedUser');
 
 const initErrors = { username: '', password: '' };
@@ -39,9 +38,9 @@ const initialValue = {
 const AuthContext = createContext<IAuthContext>(initialValue);
 
 const AuthProvider = ({ children }: Props) => {
-  const [username, setUsername] = useState(user);
-  const [errors, setErrors] = useState(initErrors);
+  const [username, setUsername] = useState('');
   const [remembered, setRemembered] = useState(rememberedUser);
+  const [errors, setErrors] = useState(initErrors);
 
   const handleAuth = (
     username: string,
@@ -55,7 +54,7 @@ const AuthProvider = ({ children }: Props) => {
       )
     ) {
       setUsername(username);
-      localStorage.setItem('loggedAs', username);
+
       if (rememberUser) {
         setRemembered(username);
         localStorage.setItem('rememberedUser', username);
@@ -76,7 +75,6 @@ const AuthProvider = ({ children }: Props) => {
 
   const handleLogout = () => {
     setUsername('');
-    localStorage.removeItem('loggedAs');
   };
 
   return (
@@ -85,7 +83,7 @@ const AuthProvider = ({ children }: Props) => {
         authenticated: Boolean(username),
         handleAuth,
         handleLogout,
-        username: username ?? '',
+        username,
         rememberedUser: remembered ?? '',
         errors,
         setErrors,
